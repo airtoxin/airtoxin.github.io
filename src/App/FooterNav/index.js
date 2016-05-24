@@ -5,7 +5,7 @@ const styles = {
         position: "absolute",
         fontSize: "98px",
         width: "100%",
-        top: 0
+        bottom: 0
     },
     container: {
         display: "flex",
@@ -15,9 +15,9 @@ const styles = {
 };
 
 export default (props) => (
-    <div style={{...props.style, ...styles.default}}>
+    <div style={{...styles.default}}>
         <div style={styles.container}>
-            <section>airtoxin</section>
+            <section>nixotria</section>
         </div>
     </div>
 );
