@@ -19,8 +19,9 @@ export default class App extends React.Component {
         };
 
         return (
-            <div style={{position: "fixed", zIndex: -99, width: "100%", height: "100%"}}>
-              <YouTube videoId="IadsLclBOS8" opts={opts}/>
+            <div style={{position: "fixed", width: "100%", height: "100%"}}>
+                <div id="overlay"/>
+                <YouTube videoId="IadsLclBOS8" opts={opts}/>
             </div>
         );
     }
