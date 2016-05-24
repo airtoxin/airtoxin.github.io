@@ -8,7 +8,8 @@ const styles = {
         width: "100%",
         height: "100%",
         backgroundColor: "black",
-        color: "white"
+        color: "white",
+        fontFamily: "'Arvo', serif"
     },
     headerNav: {
         zIndex: 10
@@ -21,7 +22,7 @@ const styles = {
         width: "100%",
         height: "100%",
         /* http://www.transparenttextures.com/ */
-        backgroundImage: `url(../img/cross-stripes.png")`,
+        backgroundImage: `url("img/cross-stripes.png")`,
     }
 };
 
