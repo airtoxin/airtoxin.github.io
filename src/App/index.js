@@ -46,7 +46,7 @@ export default class App extends React.Component {
             <div style={styles.app}>
                 <div style={styles.overlay}/>
                 <HeaderNav style={styles.headerNav}/>
-                <YouTube videoId="Ftm2uv7-Ybw" opts={opts}/>
+                <YouTube videoId="IvjMgVS6kng" opts={opts}/>
                 <FooterNav />
             </div>
         );
