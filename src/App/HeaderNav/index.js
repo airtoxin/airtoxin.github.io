@@ -5,7 +5,8 @@ const styles = {
         position: "absolute",
         fontSize: "98px",
         width: "100%",
-        top: 0
+        top: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.6)"
     },
     container: {
         display: "flex",
