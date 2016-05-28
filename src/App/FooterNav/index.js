@@ -26,18 +26,22 @@ const styles = {
     }
 };
 
-export default (props) => (
-    <div style={{...styles.default}}>
-        <div style={styles.container}>
-            <Link to="github"><div style={styles.item}><i className="fa fa-github" aria-hidden="true"></i></div></Link>
-            <Separator style={styles.separator}/>
-            <Link to="twitter"><div style={styles.item}><i className="fa fa-twitter" aria-hidden="true"></i></div></Link>
-            <Separator style={styles.separator}/>
-            <Link to="soundcloud"><div style={styles.item}><i className="fa fa-soundcloud" aria-hidden="true"></i></div></Link>
-            <Separator style={styles.separator}/>
-            <Link to="slideshare"><div style={styles.item}><i className="fa fa-slideshare" aria-hidden="true"></i></div></Link>
-            <Separator style={styles.separator}/>
-            <Link to="instagram"><div style={styles.item}><i className="fa fa-instagram" aria-hidden="true"></i></div></Link>
-        </div>
-    </div>
-);
+export default class FooterNav extends React.Component {
+    render() {
+        return (
+            <div style={{...styles.default}}>
+                <div style={styles.container}>
+                    <div style={styles.item}><Link to="github"><i className="fa fa-github" aria-hidden="true"></i></Link></div>
+                    <Separator style={styles.separator}/>
+                    <div style={styles.item}><Link to="twitter"><i className="fa fa-twitter" aria-hidden="true"></i></Link></div>
+                    <Separator style={styles.separator}/>
+                    <div style={styles.item}><Link to="soundcloud"><i className="fa fa-soundcloud" aria-hidden="true"></i></Link></div>
+                    <Separator style={styles.separator}/>
+                    <div style={styles.item}><Link to="slideshare"><i className="fa fa-slideshare" aria-hidden="true"></i></Link></div>
+                    <Separator style={styles.separator}/>
+                    <div style={styles.item}><Link to="instagram"><i className="fa fa-instagram" aria-hidden="true"></i></Link></div>
+                </div>
+            </div>
+        );
+    }
+}

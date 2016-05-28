@@ -17,10 +17,8 @@ const styles = {
 
 export default (props) => (
     <div style={{...props.style, ...styles.default}}>
-        <Link to="home">
-            <div style={styles.container}>
-                <section>airtoxin</section>
-            </div>
-        </Link>
+        <div style={styles.container}>
+            <Link to="home"><section>airtoxin</section></Link>
+        </div>
     </div>
 );
