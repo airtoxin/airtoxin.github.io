@@ -10,7 +10,7 @@ const styles = {
         width: "100%",
         height: "100%",
         backgroundColor: "black",
-        color: "#ababab",
+        color: "white",
         fontFamily: "'Arvo', serif"
     },
     contents: {
