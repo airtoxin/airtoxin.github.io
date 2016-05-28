@@ -33244,7 +33244,7 @@ exports.default = function (props) {
     );
 };
 
-},{"../../shared/Link":313,"./Separator":304,"react":297}],306:[function(require,module,exports){
+},{"../../shared/Link":317,"./Separator":304,"react":297}],306:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33297,7 +33297,7 @@ exports.default = function (props) {
     );
 };
 
-},{"../../shared/Link":313,"react":297}],307:[function(require,module,exports){
+},{"../../shared/Link":317,"react":297}],307:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33343,6 +33343,90 @@ exports.default = function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "instagram"
+  );
+};
+
+},{"react":297}],310:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "slideshare"
+  );
+};
+
+},{"react":297}],311:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "soundcloud"
+  );
+};
+
+},{"react":297}],312:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "twitter"
+  );
+};
+
+},{"react":297}],313:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.Pages = undefined;
@@ -33361,6 +33445,22 @@ var _Github = require("./Github");
 
 var _Github2 = _interopRequireDefault(_Github);
 
+var _Twitter = require("./Twitter");
+
+var _Twitter2 = _interopRequireDefault(_Twitter);
+
+var _Soundcloud = require("./Soundcloud");
+
+var _Soundcloud2 = _interopRequireDefault(_Soundcloud);
+
+var _Slideshare = require("./Slideshare");
+
+var _Slideshare2 = _interopRequireDefault(_Slideshare);
+
+var _Instagram = require("./Instagram");
+
+var _Instagram2 = _interopRequireDefault(_Instagram);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Pages = exports.Pages = function Pages(props) {
@@ -33369,6 +33469,14 @@ var Pages = exports.Pages = function Pages(props) {
             return _react2.default.createElement(_Home2.default, null);
         case "github":
             return _react2.default.createElement(_Github2.default, null);
+        case "twitter":
+            return _react2.default.createElement(_Twitter2.default, null);
+        case "soundcloud":
+            return _react2.default.createElement(_Soundcloud2.default, null);
+        case "slideshare":
+            return _react2.default.createElement(_Slideshare2.default, null);
+        case "instagram":
+            return _react2.default.createElement(_Instagram2.default, null);
         default:
             return null;
     }
@@ -33378,7 +33486,7 @@ exports.default = (0, _higherOrder.branch)({
     page: ["page"]
 }, Pages);
 
-},{"./Github":307,"./Home":308,"baobab-react/higher-order":4,"react":297}],310:[function(require,module,exports){
+},{"./Github":307,"./Home":308,"./Instagram":309,"./Slideshare":310,"./Soundcloud":311,"./Twitter":312,"baobab-react/higher-order":4,"react":297}],314:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33495,7 +33603,7 @@ var App = function (_React$Component) {
 
 exports.default = App;
 
-},{"./FooterNav":305,"./HeaderNav":306,"./Pages":309,"react":297,"react-youtube":159}],311:[function(require,module,exports){
+},{"./FooterNav":305,"./HeaderNav":306,"./Pages":313,"react":297,"react-youtube":159}],315:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33505,7 +33613,7 @@ var setPage = exports.setPage = function setPage(tree, page) {
   return tree.set(["page"], page);
 };
 
-},{}],312:[function(require,module,exports){
+},{}],316:[function(require,module,exports){
 "use strict";
 
 var _react = require("react");
@@ -33532,7 +33640,7 @@ var RootedApp = (0, _higherOrder.root)(_state2.default, _App2.default);
 
 _reactDom2.default.render(_react2.default.createElement(RootedApp, null), document.getElementById("app"));
 
-},{"./App":310,"./state":314,"baobab-react/higher-order":4,"react":297,"react-dom":158}],313:[function(require,module,exports){
+},{"./App":314,"./state":318,"baobab-react/higher-order":4,"react":297,"react-dom":158}],317:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33562,7 +33670,7 @@ var Link = exports.Link = function Link(props) {
 
 exports.default = (0, _higherOrder.branch)({}, Link);
 
-},{"../../actions":311,"baobab-react/higher-order":4,"react":297}],314:[function(require,module,exports){
+},{"../../actions":315,"baobab-react/higher-order":4,"react":297}],318:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33585,4 +33693,4 @@ var tree = new _baobab2.default({
 
 exports.default = tree;
 
-},{"baobab":5}]},{},[312]);
+},{"baobab":5}]},{},[316]);
