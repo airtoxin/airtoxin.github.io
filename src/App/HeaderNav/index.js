@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "../../shared/Link";
 
 const styles = {
     default: {
@@ -16,8 +17,10 @@ const styles = {
 
 export default (props) => (
     <div style={{...props.style, ...styles.default}}>
-        <div style={styles.container}>
-            <section>airtoxin</section>
-        </div>
+        <Link to="home">
+            <div style={styles.container}>
+                <section>airtoxin</section>
+            </div>
+        </Link>
     </div>
 );

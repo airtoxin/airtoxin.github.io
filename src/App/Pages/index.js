@@ -1,7 +1,19 @@
 import React from "react";
+import {branch} from "baobab-react/higher-order";
+import Home from "./Home";
+import Github from "./Github";
 
-export default class Pages extends React.Component {
-    render() {
-        return <div>pages</div>;
+export const Pages = (props) => {
+    switch (props.page) {
+        case "home":
+            return <Home/>;
+        case "github":
+            return <Github/>;
+        default:
+            return null;
     }
-}
+};
+
+export default branch({
+    page: ["page"]
+}, Pages);

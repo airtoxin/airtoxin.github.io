@@ -1,5 +1,6 @@
 import React from "react";
 import Separator from "./Separator";
+import Link from "../../shared/Link";
 
 const styles = {
     default: {
@@ -28,15 +29,15 @@ const styles = {
 export default (props) => (
     <div style={{...styles.default}}>
         <div style={styles.container}>
-            <a style={styles.item} href="https://github.com/airtoxin"><i className="fa fa-github" aria-hidden="true"></i></a>
+            <Link to="github"><div style={styles.item}><i className="fa fa-github" aria-hidden="true"></i></div></Link>
             <Separator style={styles.separator}/>
-            <a style={styles.item} href="https://twitter.com/airtoxin"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+            <Link to="twitter"><div style={styles.item}><i className="fa fa-twitter" aria-hidden="true"></i></div></Link>
             <Separator style={styles.separator}/>
-            <a style={styles.item} href="https://soundcloud.com/airtoxin"><i className="fa fa-soundcloud" aria-hidden="true"></i></a>
+            <Link to="soundcloud"><div style={styles.item}><i className="fa fa-soundcloud" aria-hidden="true"></i></div></Link>
             <Separator style={styles.separator}/>
-            <a style={styles.item} href="http://www.slideshare.net/ryojiishii14"><i className="fa fa-slideshare" aria-hidden="true"></i></a>
+            <Link to="slideshare"><div style={styles.item}><i className="fa fa-slideshare" aria-hidden="true"></i></div></Link>
             <Separator style={styles.separator}/>
-            <a style={styles.item} href="https://www.instagram.com/airtoxin/"><i className="fa fa-instagram" aria-hidden="true"></i></a>
+            <Link to="instagram"><div style={styles.item}><i className="fa fa-instagram" aria-hidden="true"></i></div></Link>
         </div>
     </div>
 );

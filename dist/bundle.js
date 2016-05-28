@@ -33154,6 +33154,10 @@ var _Separator = require("./Separator");
 
 var _Separator2 = _interopRequireDefault(_Separator);
 
+var _Link = require("../../shared/Link");
+
+var _Link2 = _interopRequireDefault(_Link);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var styles = {
@@ -33188,39 +33192,59 @@ exports.default = function (props) {
             "div",
             { style: styles.container },
             _react2.default.createElement(
-                "a",
-                { style: styles.item, href: "https://github.com/airtoxin" },
-                _react2.default.createElement("i", { className: "fa fa-github", "aria-hidden": "true" })
+                _Link2.default,
+                { to: "github" },
+                _react2.default.createElement(
+                    "div",
+                    { style: styles.item },
+                    _react2.default.createElement("i", { className: "fa fa-github", "aria-hidden": "true" })
+                )
             ),
             _react2.default.createElement(_Separator2.default, { style: styles.separator }),
             _react2.default.createElement(
-                "a",
-                { style: styles.item, href: "https://twitter.com/airtoxin" },
-                _react2.default.createElement("i", { className: "fa fa-twitter", "aria-hidden": "true" })
+                _Link2.default,
+                { to: "twitter" },
+                _react2.default.createElement(
+                    "div",
+                    { style: styles.item },
+                    _react2.default.createElement("i", { className: "fa fa-twitter", "aria-hidden": "true" })
+                )
             ),
             _react2.default.createElement(_Separator2.default, { style: styles.separator }),
             _react2.default.createElement(
-                "a",
-                { style: styles.item, href: "https://soundcloud.com/airtoxin" },
-                _react2.default.createElement("i", { className: "fa fa-soundcloud", "aria-hidden": "true" })
+                _Link2.default,
+                { to: "soundcloud" },
+                _react2.default.createElement(
+                    "div",
+                    { style: styles.item },
+                    _react2.default.createElement("i", { className: "fa fa-soundcloud", "aria-hidden": "true" })
+                )
             ),
             _react2.default.createElement(_Separator2.default, { style: styles.separator }),
             _react2.default.createElement(
-                "a",
-                { style: styles.item, href: "http://www.slideshare.net/ryojiishii14" },
-                _react2.default.createElement("i", { className: "fa fa-slideshare", "aria-hidden": "true" })
+                _Link2.default,
+                { to: "slideshare" },
+                _react2.default.createElement(
+                    "div",
+                    { style: styles.item },
+                    _react2.default.createElement("i", { className: "fa fa-slideshare", "aria-hidden": "true" })
+                )
             ),
             _react2.default.createElement(_Separator2.default, { style: styles.separator }),
             _react2.default.createElement(
-                "a",
-                { style: styles.item, href: "https://www.instagram.com/airtoxin/" },
-                _react2.default.createElement("i", { className: "fa fa-instagram", "aria-hidden": "true" })
+                _Link2.default,
+                { to: "instagram" },
+                _react2.default.createElement(
+                    "div",
+                    { style: styles.item },
+                    _react2.default.createElement("i", { className: "fa fa-instagram", "aria-hidden": "true" })
+                )
             )
         )
     );
 };
 
-},{"./Separator":304,"react":297}],306:[function(require,module,exports){
+},{"../../shared/Link":313,"./Separator":304,"react":297}],306:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33232,6 +33256,10 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
+
+var _Link = require("../../shared/Link");
+
+var _Link2 = _interopRequireDefault(_Link);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -33254,25 +33282,27 @@ exports.default = function (props) {
         "div",
         { style: _extends({}, props.style, styles.default) },
         _react2.default.createElement(
-            "div",
-            { style: styles.container },
+            _Link2.default,
+            { to: "home" },
             _react2.default.createElement(
-                "section",
-                null,
-                "airtoxin"
+                "div",
+                { style: styles.container },
+                _react2.default.createElement(
+                    "section",
+                    null,
+                    "airtoxin"
+                )
             )
         )
     );
 };
 
-},{"react":297}],307:[function(require,module,exports){
+},{"../../shared/Link":313,"react":297}],307:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require("react");
 
@@ -33280,38 +33310,75 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Pages = function (_React$Component) {
-    _inherits(Pages, _React$Component);
-
-    function Pages() {
-        _classCallCheck(this, Pages);
-
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Pages).apply(this, arguments));
-    }
-
-    _createClass(Pages, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                null,
-                "pages"
-            );
-        }
-    }]);
-
-    return Pages;
-}(_react2.default.Component);
-
-exports.default = Pages;
+exports.default = function () {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "github"
+  );
+};
 
 },{"react":297}],308:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function () {
+  return _react2.default.createElement(
+    "div",
+    null,
+    "home"
+  );
+};
+
+},{"react":297}],309:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.Pages = undefined;
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _higherOrder = require("baobab-react/higher-order");
+
+var _Home = require("./Home");
+
+var _Home2 = _interopRequireDefault(_Home);
+
+var _Github = require("./Github");
+
+var _Github2 = _interopRequireDefault(_Github);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Pages = exports.Pages = function Pages(props) {
+    switch (props.page) {
+        case "home":
+            return _react2.default.createElement(_Home2.default, null);
+        case "github":
+            return _react2.default.createElement(_Github2.default, null);
+        default:
+            return null;
+    }
+};
+
+exports.default = (0, _higherOrder.branch)({
+    page: ["page"]
+}, Pages);
+
+},{"./Github":307,"./Home":308,"baobab-react/higher-order":4,"react":297}],310:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33428,7 +33495,17 @@ var App = function (_React$Component) {
 
 exports.default = App;
 
-},{"./FooterNav":305,"./HeaderNav":306,"./Pages":307,"react":297,"react-youtube":159}],309:[function(require,module,exports){
+},{"./FooterNav":305,"./HeaderNav":306,"./Pages":309,"react":297,"react-youtube":159}],311:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var setPage = exports.setPage = function setPage(tree, page) {
+  return tree.set(["page"], page);
+};
+
+},{}],312:[function(require,module,exports){
 "use strict";
 
 var _react = require("react");
@@ -33455,7 +33532,37 @@ var RootedApp = (0, _higherOrder.root)(_state2.default, _App2.default);
 
 _reactDom2.default.render(_react2.default.createElement(RootedApp, null), document.getElementById("app"));
 
-},{"./App":308,"./state":310,"baobab-react/higher-order":4,"react":297,"react-dom":158}],310:[function(require,module,exports){
+},{"./App":310,"./state":314,"baobab-react/higher-order":4,"react":297,"react-dom":158}],313:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Link = undefined;
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _higherOrder = require("baobab-react/higher-order");
+
+var _actions = require("../../actions");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Link = exports.Link = function Link(props) {
+  return _react2.default.createElement(
+    "div",
+    { onClick: function onClick() {
+        return props.dispatch(_actions.setPage, props.to);
+      } },
+    props.children
+  );
+};
+
+exports.default = (0, _higherOrder.branch)({}, Link);
+
+},{"../../actions":311,"baobab-react/higher-order":4,"react":297}],314:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33469,9 +33576,13 @@ var _baobab2 = _interopRequireDefault(_baobab);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var tree = new _baobab2.default({
-    page: "/"
+    page: "home"
+}, {
+    page: function page(v) {
+        return ["home", "github", "twitter", "soundcloud", "slideshare", "instagram"].includes(v);
+    }
 });
 
 exports.default = tree;
 
-},{"baobab":5}]},{},[309]);
+},{"baobab":5}]},{},[312]);
