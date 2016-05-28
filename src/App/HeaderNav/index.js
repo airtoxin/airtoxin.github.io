@@ -2,7 +2,6 @@ import React from "react";
 
 const styles = {
     default: {
-        position: "absolute",
         fontSize: "98px",
         width: "100%",
         top: 0,

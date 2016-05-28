@@ -33237,7 +33237,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var styles = {
     default: {
-        position: "absolute",
         fontSize: "98px",
         width: "100%",
         top: 0,
@@ -33279,9 +33278,59 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Pages = function (_React$Component) {
+    _inherits(Pages, _React$Component);
+
+    function Pages() {
+        _classCallCheck(this, Pages);
+
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Pages).apply(this, arguments));
+    }
+
+    _createClass(Pages, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                null,
+                "pages"
+            );
+        }
+    }]);
+
+    return Pages;
+}(_react2.default.Component);
+
+exports.default = Pages;
+
+},{"react":297}],308:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
 var _HeaderNav = require("./HeaderNav");
 
 var _HeaderNav2 = _interopRequireDefault(_HeaderNav);
+
+var _Pages = require("./Pages");
+
+var _Pages2 = _interopRequireDefault(_Pages);
 
 var _FooterNav = require("./FooterNav");
 
@@ -33307,6 +33356,11 @@ var styles = {
         backgroundColor: "black",
         color: "white",
         fontFamily: "'Arvo', serif"
+    },
+    contents: {
+        position: "absolute",
+        width: "100%",
+        height: "100%"
     },
     headerNav: {},
     overlay: {
@@ -33350,10 +33404,15 @@ var App = function (_React$Component) {
             return _react2.default.createElement(
                 "div",
                 { style: styles.app },
+                _react2.default.createElement(
+                    "div",
+                    { style: styles.contents },
+                    _react2.default.createElement(_HeaderNav2.default, { style: styles.headerNav }),
+                    _react2.default.createElement(_Pages2.default, null),
+                    _react2.default.createElement(_FooterNav2.default, null)
+                ),
                 _react2.default.createElement("div", { style: styles.overlay }),
-                _react2.default.createElement(_HeaderNav2.default, { style: styles.headerNav }),
-                _react2.default.createElement(_reactYoutube2.default, { videoId: "IvjMgVS6kng", opts: opts }),
-                _react2.default.createElement(_FooterNav2.default, null)
+                _react2.default.createElement(_reactYoutube2.default, { videoId: "IvjMgVS6kng", opts: opts })
             );
         }
     }, {
@@ -33368,7 +33427,7 @@ var App = function (_React$Component) {
 
 exports.default = App;
 
-},{"./FooterNav":305,"./HeaderNav":306,"react":297,"react-youtube":159}],308:[function(require,module,exports){
+},{"./FooterNav":305,"./HeaderNav":306,"./Pages":307,"react":297,"react-youtube":159}],309:[function(require,module,exports){
 "use strict";
 
 var _react = require("react");
@@ -33395,7 +33454,7 @@ var RootedApp = (0, _higherOrder.root)(_state2.default, _App2.default);
 
 _reactDom2.default.render(_react2.default.createElement(RootedApp, null), document.getElementById("app"));
 
-},{"./App":307,"./state":309,"baobab-react/higher-order":4,"react":297,"react-dom":158}],309:[function(require,module,exports){
+},{"./App":308,"./state":310,"baobab-react/higher-order":4,"react":297,"react-dom":158}],310:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33414,4 +33473,4 @@ var tree = new _baobab2.default({
 
 exports.default = tree;
 
-},{"baobab":5}]},{},[308]);
+},{"baobab":5}]},{},[309]);

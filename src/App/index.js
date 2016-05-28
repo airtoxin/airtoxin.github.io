@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderNav from "./HeaderNav";
+import Pages from "./Pages";
 import FooterNav from "./FooterNav";
 import YouTube from "react-youtube"
 
@@ -11,6 +12,11 @@ const styles = {
         backgroundColor: "black",
         color: "white",
         fontFamily: "'Arvo', serif"
+    },
+    contents: {
+        position: "absolute",
+        width: "100%",
+        height: "100%",
     },
     headerNav: {
     },
@@ -44,10 +50,15 @@ export default class App extends React.Component {
 
         return (
             <div style={styles.app}>
+                <div style={styles.contents}>
+                    <HeaderNav style={styles.headerNav}/>
+                    <Pages/>
+                    <FooterNav />
+                </div>
+
+                {/* background youtube */}
                 <div style={styles.overlay}/>
-                <HeaderNav style={styles.headerNav}/>
                 <YouTube videoId="IvjMgVS6kng" opts={opts}/>
-                <FooterNav />
             </div>
         );
     }
