@@ -33397,7 +33397,8 @@ var App = function (_React$Component) {
                     iv_load_policy: 3,
                     loop: 1,
                     modestbranding: 1,
-                    showinfo: 0
+                    showinfo: 0,
+                    vq: "small"
                 }
             };
 
