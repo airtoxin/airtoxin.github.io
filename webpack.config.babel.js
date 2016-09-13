@@ -23,7 +23,8 @@ export default {
   },
   plugins: [
     new Copy([
-      { from: "src/index.html" }
+      { from: "src/index.html" },
+      { from: "src/index.css" },
     ]),
     new webpack.HotModuleReplacementPlugin()
   ],
