@@ -1,36 +1,36 @@
-import "babel-polyfill";
-import path from "path";
-import webpack from "webpack";
+import 'babel-polyfill';
+import path from 'path';
+import webpack from 'webpack';
 import Copy from 'copy-webpack-plugin';
 
 export default {
-  entry: "./src/index.jsx",
+  entry: './src/index.jsx',
   output: {
-    publicPath: "/",
-    sourcePrefix: " ",
-    path: path.join(__dirname, "public"),
-    filename: "app.js"
+    publicPath: '/',
+    sourcePrefix: ' ',
+    path: path.join(__dirname, 'public'),
+    filename: 'app.js'
   },
-  target: "web",
+  target: 'web',
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: ['', '.js', '.jsx']
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, include: [path.resolve(__dirname, "src")], loader: "babel" },
-      { test: /\.css$/, include: [path.resolve(__dirname, "src")], loaders: ["style", "css?modules"] }
+      { test: /\.jsx?$/, include: [path.resolve(__dirname, 'src')], loader: 'babel' },
+      { test: /\.css$/, include: [path.resolve(__dirname, 'src')], loaders: ['style', 'css?modules'] }
     ]
   },
   plugins: [
     new Copy([
-      { from: "src/index.html" },
-      { from: "src/index.css" },
+      { from: 'src/index.html' },
+      { from: 'src/index.css' },
     ]),
     new webpack.HotModuleReplacementPlugin()
   ],
-  devTool: "#inline-source-map",
+  devTool: '#inline-source-map',
   devServer: {
-    contentBase: "public",
+    contentBase: 'public',
     port: 9000,
     inline: true,
     hot: true,
