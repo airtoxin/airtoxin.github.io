@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 import path from 'path';
 import webpack from 'webpack';
+import sass from 'node-sass';
 import Copy from 'copy-webpack-plugin';
 
 export default {
@@ -24,7 +25,11 @@ export default {
   plugins: [
     new Copy([
       { from: 'src/index.html' },
-      { from: 'src/index.css' },
+      {
+        from: 'src/index.scss',
+        to: '[name].css',
+        transform: (content) => sass.renderSync({ data: content.toString('UTF-8') }).css,
+      },
     ]),
     new webpack.HotModuleReplacementPlugin()
   ],

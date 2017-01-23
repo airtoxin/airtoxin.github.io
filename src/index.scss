@@ -1,0 +1,108 @@
+body {
+  background: black;
+  color: white;
+}
+
+.flex {
+  display: flex;
+
+  &.row {
+    flex-direction: row;
+    justify-content: center;
+  }
+  &.col {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: #2B78C0;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.section {
+  position: relative;
+  margin-top: -3em;
+
+  &.black {
+    background-color: black;
+    color: white
+  }
+  &.white {
+    background-color: white;
+    color: black
+  }
+  &.back { z-index: -1; }
+  &.front { z-index: 1; }
+
+  &.skew {
+    margin: -5em;
+    padding: 0;
+    position: relative;
+    height: 10em;
+    &.positive {
+      transform: skewY(3deg);
+    }
+    &.negative {
+      transform: skewY(-3deg);
+    }
+  }
+}
+
+.showcase {
+  margin: 1em;
+}
+
+.glitch{
+  color:white;
+  font-size:100px;
+  position:relative;
+  width:400px;
+  margin:0 auto;
+  margin-bottom: 1em;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;
+  text-shadow:-2px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-2px;
+  text-shadow:2px 0 green;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
