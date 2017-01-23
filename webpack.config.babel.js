@@ -5,7 +5,7 @@ import sass from 'node-sass';
 import Copy from 'copy-webpack-plugin';
 
 export default {
-  entry: './src/index.jsx',
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
     publicPath: '/',
     sourcePrefix: ' ',
