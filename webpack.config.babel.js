@@ -8,18 +8,14 @@ export default {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     publicPath: '/',
-    sourcePrefix: ' ',
     path: path.join(__dirname, 'public'),
     filename: 'app.js'
   },
   target: 'web',
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
   module: {
     loaders: [
-      { test: /\.jsx?$/, include: [path.resolve(__dirname, 'src')], loader: 'babel' },
-      { test: /\.css$/, include: [path.resolve(__dirname, 'src')], loaders: ['style', 'css?modules'] }
+      { test: /\.jsx?$/, include: [path.resolve(__dirname, 'src')], loader: 'babel-loader' },
+      { test: /\.css$/, include: [path.resolve(__dirname, 'src')], loaders: ['style-loader', 'css-loader?modules'] }
     ]
   },
   plugins: [
@@ -33,12 +29,11 @@ export default {
     ]),
     new webpack.HotModuleReplacementPlugin()
   ],
-  devTool: '#inline-source-map',
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: 'public',
     port: 9000,
     inline: true,
-    hot: true,
-    colors: true
+    hot: true
   }
 };
