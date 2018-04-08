@@ -42,7 +42,6 @@ const draw = () => {
 
 let intervalId = draw();
 
-
 const redraw = () => {
   clearInterval(intervalId);
   intervalId = draw();
