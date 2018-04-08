@@ -7,9 +7,35 @@ body {
 
 #canvas {
   z-index: -1;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+}
+
+.gray {
+  background-color: rgba(71, 115, 134, 0.3);
+  color: white;
+  .link { color: #FF5C18 }
+}
+.yellow {
+  background-color: rgba(245, 223, 88, 0.3);
+  color: white;
+  .link { color: #CD3544; }
+}
+.blue {
+  background-color: rgba(29, 114, 165, 0.3);
+  color: white;
+  .link { color: #F5DF58; }
+}
+.red {
+  background-color: rgba(205, 53, 68, 0.3);
+  color: white;
+  .link { color: #2B78C0; }
+}
+.orange {
+  background-color: rgba(255, 92, 24, 0.3);
+  color: white;
+  .link { color: #2B78C0; }
 }
 
 .flex {
@@ -31,6 +57,10 @@ body {
   &:hover {
     text-decoration: underline;
   }
+}
+
+.showcase {
+  margin: 1em;
 }
 
 .glitch{
