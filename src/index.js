@@ -36,7 +36,7 @@ const draw = () => {
     VoteStrategy
   );
 
-  return setInterval(() => {
+  const d = () => {
     ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawCells(ctx, gol.cells, canvas.width, canvas.height);
@@ -48,16 +48,20 @@ const draw = () => {
     bgCtx.fill();
 
     gol.next();
-  }, 100);
+
+    requestAnimationFrame(d);
+  }
+
+  d();
+
+  window.onclick = () => gol.initialize(
+    Math.floor(CANVAS_SIZE / CELL_SIZE),
+    Math.floor(CANVAS_SIZE / CELL_SIZE)
+  );
+  window.onresize = () => gol.initialize(
+    Math.floor(CANVAS_SIZE / CELL_SIZE),
+    Math.floor(CANVAS_SIZE / CELL_SIZE)
+  );
 }
 
-let intervalId = draw();
-
-const redraw = () => {
-  clearInterval(intervalId);
-  intervalId = draw();
-}
-
-window.onresize = redraw;
-
-window.onclick = redraw;
+draw();

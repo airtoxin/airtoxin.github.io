@@ -34,6 +34,10 @@ export const NeonStrategy = neighborCells => {
 export class Automaton {
   constructor(width, height, strategy) {
     this._strategy = strategy;
+    this.initialize(width, height);
+  }
+
+  initialize(width, height) {
     this.cells =
       range(0, height).map(() =>
         range(0, width).map(() => Math.random() < 0.5));
