@@ -2,32 +2,12 @@ import {
   Automaton,
   GameOfLifeStrategy,
   NeonStrategy,
-  VoteStrategy
+  VoteStrategy,
+  DazzleStrategy
 } from "./Automaton";
 
 const CELL_SIZE = 5;
 const CANVAS_SIZE = 300;
-
-const drawCells = (ctx, cells, canvasWidth, canvasHeight) => {
-  cells.forEach((row, y) =>
-    row.forEach((cell, x) => {
-      if (cell) {
-        ctx.beginPath();
-        ctx.arc(
-          x * CELL_SIZE + CELL_SIZE / 2,
-          y * CELL_SIZE + CELL_SIZE / 2,
-          CELL_SIZE / 2,
-          Math.PI * 2,
-          false
-        );
-        ctx.strokeStyle = "rgb(0, 64, 64)";
-        ctx.stroke();
-        ctx.fillStyle = "rgba(0, 32, 32)";
-        ctx.fill();
-      }
-    })
-  );
-};
 
 const draw = () => {
   const canvas = document.getElementById("canvas");
@@ -46,13 +26,30 @@ const draw = () => {
   const gol = new Automaton(
     Math.floor(CANVAS_SIZE / CELL_SIZE),
     Math.floor(CANVAS_SIZE / CELL_SIZE),
-    VoteStrategy
+    DazzleStrategy
   );
 
   const d = () => {
     ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    drawCells(ctx, gol.cells, canvas.width, canvas.height);
+    gol.cells.forEach((row, y) =>
+      row.forEach((cell, x) => {
+        if (cell) {
+          ctx.beginPath();
+          ctx.arc(
+            x * CELL_SIZE + CELL_SIZE / 2,
+            y * CELL_SIZE + CELL_SIZE / 2,
+            CELL_SIZE / 2,
+            Math.PI * 2,
+            false
+          );
+          ctx.strokeStyle = "rgb(0, 64, 64)";
+          ctx.stroke();
+          ctx.fillStyle = "rgba(0, 32, 32)";
+          ctx.fill();
+        }
+      })
+    );
 
     const bgPattern = bgCtx.createPattern(canvas, "repeat");
     bgCtx.rect(0, 0, document.body.clientWidth, document.body.clientHeight);

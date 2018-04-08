@@ -31,6 +31,14 @@ export const NeonStrategy = neighborCells => {
   return count === 0 || count === 9;
 };
 
+export const DazzleStrategy = neighborCells => {
+  const count = neighborCells
+    .map(x => (x === undefined || x === false ? 0 : 1))
+    .reduce((a, x) => a + x, 0);
+
+  return count > 4;
+};
+
 export class Automaton {
   constructor(width, height, strategy) {
     this._strategy = strategy;
