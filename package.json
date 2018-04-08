@@ -1,0 +1,25 @@
+{
+  "name": "airtoxin.github.io",
+  "version": "1.0.0",
+  "repository": "git@github.com:airtoxin/airtoxin.github.io.git",
+  "author": "airtoxin <airtoxin@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-preset-env": "^1.6.1",
+    "copy-webpack-plugin": "^4.5.1",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.11.1",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5"
+  }
+}
