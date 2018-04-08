@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const sass = require("node-sass");
 
 module.exports = {
   module: {
@@ -14,13 +15,14 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: "./src/index.html",
-      minify: {
-        collapseWhitespace: true
-      }
+      template: "./src/index.html"
     }),
     CopyWebpackPlugin([
-      "src/index.css"
+      {
+        from: "src/index.scss",
+        to: "index.css",
+        transform: (content) => sass.renderSync({ data: content.toString('UTF-8') }).css,
+      },
     ]),
   ],
 };

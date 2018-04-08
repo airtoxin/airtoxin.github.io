@@ -13,6 +13,24 @@ export const GameOfLifeStrategy = neighborCells => {
   }
 };
 
+export const VoteStrategy = neighborCells => {
+  const count = neighborCells
+    .map(x => (x === undefined || x === false) ? 0 : 1)
+    .reduce((a, x) => a + x, 0);
+
+  if (count === 4 || count === 5) return !neighborCells[4];
+  if (count < 4) return false;
+  return true;
+}
+
+export const NeonStrategy = neighborCells => {
+  const count = neighborCells
+    .map(x => (x === undefined || x === false) ? 0 : 1)
+    .reduce((a, x) => a + x, 0);
+
+  return count === 0 || count === 9;
+};
+
 export class Automaton {
   constructor(width, height, strategy) {
     this._strategy = strategy;

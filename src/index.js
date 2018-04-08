@@ -1,5 +1,5 @@
-import { getCanvasContext } from "./canvas";
-import { Automaton, GameOfLifeStrategy } from "./Automaton";
+import { sample } from "lodash";
+import { Automaton, GameOfLifeStrategy, NeonStrategy, VoteStrategy } from "./Automaton";
 
 const CELL_SIZE = 10;
 
@@ -8,7 +8,7 @@ const drawCells = (ctx, cells, canvasWidth, canvasHeight) => {
     if (cell) {
       ctx.beginPath();
       ctx.arc(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE / 2, Math.PI*2, false);
-      ctx.strokeStyle = "rgb(192, 192, 192)";
+      ctx.strokeStyle = "rgb(0, 64, 64)";
       ctx.stroke();
     }
   }));
@@ -20,24 +20,34 @@ const draw = () => {
   canvas.height = document.body.clientHeight;
 
   const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
+  ctx.fill();
 
   const gol = new Automaton(
     Math.floor(document.body.clientWidth / CELL_SIZE),
     Math.floor(document.body.clientHeight / CELL_SIZE),
-    GameOfLifeStrategy
+    sample([
+      GameOfLifeStrategy,
+      NeonStrategy,
+      VoteStrategy
+    ])
   );
 
   return setInterval(() => {
-    ctx.fillStyle = "rgba(255, 255, 255, 0.4)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     drawCells(ctx, gol.cells, canvas.width, canvas.height);
     gol.next();
-  }, 100);
+  }, 200);
 }
 
 let intervalId = draw();
 
-window.onresize = () => {
+
+const redraw = () => {
   clearInterval(intervalId);
   intervalId = draw();
-};
+}
+
+window.onresize = redraw;
+
+window.onclick = redraw;
