@@ -3,7 +3,7 @@ body {
   height: 100vh;
   color: white;
   background-color: black;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 1.5em;
 }
 
@@ -21,27 +21,37 @@ body {
 .gray {
   background-color: rgba(71, 115, 134, 0.2);
   color: white;
-  .link { color: #FF5C18 }
+  .link {
+    color: #ff5c18;
+  }
 }
 .yellow {
   background-color: rgba(245, 223, 88, 0.2);
   color: white;
-  .link { color: #CD3544; }
+  .link {
+    color: #cd3544;
+  }
 }
 .blue {
   background-color: rgba(29, 114, 165, 0.2);
   color: white;
-  .link { color: #F5DF58; }
+  .link {
+    color: #f5df58;
+  }
 }
 .red {
   background-color: rgba(205, 53, 68, 0.2);
   color: white;
-  .link { color: #2B78C0; }
+  .link {
+    color: #2b78c0;
+  }
 }
 .orange {
   background-color: rgba(255, 92, 24, 0.3);
   color: white;
-  .link { color: #2B78C0; }
+  .link {
+    color: #2b78c0;
+  }
 }
 
 .flex {
@@ -69,51 +79,51 @@ body {
   margin: 1em;
 }
 
-.glitch{
-  color:white;
-  font-size:100px;
-  position:relative;
-  margin:0 auto;
+.glitch {
+  color: white;
+  font-size: 100px;
+  position: relative;
+  margin: 0 auto;
   margin-bottom: 1em;
 }
-@keyframes noise-anim{
-  $steps:20;
-  @for $i from 0 through $steps{
-    #{percentage($i*(1/$steps))}{
-      clip:rect(random(100)+px,9999px,random(100)+px,0);
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
     }
   }
 }
-.glitch:after{
-  content:attr(data-text);
-  position:absolute;
-  left:2px;
-  text-shadow:-2px 0 red;
-  top:0;
-  color:white;
-  background:none;
-  overflow:hidden;
-  clip:rect(0,900px,0,0);
-  animation:noise-anim 2s infinite linear alternate-reverse;
+.glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -2px 0 red;
+  top: 0;
+  color: white;
+  background: none;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
 }
 
-@keyframes noise-anim-2{
-  $steps:20;
-  @for $i from 0 through $steps{
-    #{percentage($i*(1/$steps))}{
-      clip:rect(random(100)+px,9999px,random(100)+px,0);
+@keyframes noise-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100) + px, 9999px, random(100) + px, 0);
     }
   }
 }
-.glitch:before{
-  content:attr(data-text);
-  position:absolute;
-  left:-2px;
-  text-shadow:2px 0 green;
-  top:0;
-  color:white;
-  background:none;
-  overflow:hidden;
-  clip:rect(0,900px,0,0);
-  animation:noise-anim-2 3s infinite linear alternate-reverse;
+.glitch:before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 2px 0 green;
+  top: 0;
+  color: white;
+  background: none;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
 }

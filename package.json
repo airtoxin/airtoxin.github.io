@@ -7,6 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode production",
+    "fmt": "prettier --write 'src/**/*.{js,scss}'",
     "deploy": "rm -rf dist && npm run build && gh-pages -d dist -b master"
   },
   "devDependencies": {

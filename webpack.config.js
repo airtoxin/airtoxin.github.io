@@ -21,8 +21,9 @@ module.exports = {
       {
         from: "src/index.scss",
         to: "index.css",
-        transform: (content) => sass.renderSync({ data: content.toString('UTF-8') }).css,
-      },
-    ]),
-  ],
+        transform: content =>
+          sass.renderSync({ data: content.toString("UTF-8") }).css
+      }
+    ])
+  ]
 };
