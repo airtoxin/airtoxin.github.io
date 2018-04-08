@@ -8,6 +8,10 @@ body {
 }
 
 #canvas {
+  display: none;
+}
+
+#bg {
   z-index: -1;
   position: fixed;
   top: 0;

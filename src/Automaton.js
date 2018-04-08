@@ -40,12 +40,16 @@ export class Automaton {
   }
 
   next() {
+    const cellsYLength = this.cells.length;
+    const cellsXLength = this.cells[0].length;
+    const g = (y, x) =>
+      get(this.cells, [(cellsYLength + y) % cellsYLength, (cellsXLength + x) % cellsXLength]);
     this.cells = this.cells.map((row, y) =>
       row.map((cell, x) => {
         return this._strategy([
-          get(this.cells, [y - 1, x - 1]), get(this.cells, [y - 1, x]), get(this.cells, [y - 1, x + 1]),
-          get(this.cells, [y, x - 1]),     get(this.cells, [y, x]),     get(this.cells, [y, x + 1]),
-          get(this.cells, [y + 1, x - 1]), get(this.cells, [y + 1, x]), get(this.cells, [y + 1, x + 1]),
+          g(y - 1, x - 1), g(y - 1, x), g(y - 1, x + 1),
+          g(y, x - 1),     g(y, x),     g(y, x + 1),
+          g(y + 1, x - 1), g(y + 1, x), g(y + 1, x + 1),
         ]);
       }));
   }
