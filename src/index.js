@@ -74,6 +74,13 @@ const draw = () => {
       Math.floor(CANVAS_SIZE / CELL_SIZE),
       Math.floor(CANVAS_SIZE / CELL_SIZE)
     );
+
+  setInterval(() => {
+    gol.initialize(
+      Math.floor(CANVAS_SIZE / CELL_SIZE),
+      Math.floor(CANVAS_SIZE / CELL_SIZE)
+    );
+  }, 10 * 1000);
 };
 
 draw();
