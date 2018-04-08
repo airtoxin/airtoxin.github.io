@@ -1,6 +1,7 @@
 import { Automaton, GameOfLifeStrategy, NeonStrategy, VoteStrategy } from "./Automaton";
 
-const CELL_SIZE = 20;
+const CELL_SIZE = 5;
+const CANVAS_SIZE = 300;
 
 const drawCells = (ctx, cells, canvasWidth, canvasHeight) => {
   cells.forEach((row, y) => row.forEach((cell, x) => {
@@ -17,8 +18,8 @@ const drawCells = (ctx, cells, canvasWidth, canvasHeight) => {
 
 const draw = () => {
   const canvas = document.getElementById("canvas");
-  canvas.width = 500;
-  canvas.height = 500;
+  canvas.width = CANVAS_SIZE;
+  canvas.height = CANVAS_SIZE;
 
   const bgCanvas = document.getElementById("bg");
   bgCanvas.width = document.body.clientWidth;
@@ -30,8 +31,8 @@ const draw = () => {
   ctx.fill();
 
   const gol = new Automaton(
-    Math.floor(500 / CELL_SIZE),
-    Math.floor(500 / CELL_SIZE),
+    Math.floor(CANVAS_SIZE / CELL_SIZE),
+    Math.floor(CANVAS_SIZE / CELL_SIZE),
     VoteStrategy
   );
 
