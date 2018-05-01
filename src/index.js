@@ -77,6 +77,7 @@ const draw = () => {
 
   window.onclick = redraw;
   window.onresize = redraw;
+  window.addEventListener("touchend", redraw, false);
 
   intervalId = setInterval(redraw, 10 * 1000);
 };
