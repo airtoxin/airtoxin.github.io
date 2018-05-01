@@ -64,23 +64,21 @@ const draw = () => {
 
   d();
 
-  window.onclick = () =>
-    gol.initialize(
-      Math.floor(CANVAS_SIZE / CELL_SIZE),
-      Math.floor(CANVAS_SIZE / CELL_SIZE)
-    );
-  window.onresize = () =>
-    gol.initialize(
-      Math.floor(CANVAS_SIZE / CELL_SIZE),
-      Math.floor(CANVAS_SIZE / CELL_SIZE)
-    );
+  let intervalId;
 
-  setInterval(() => {
+  const redraw = () => {
+    clearInterval(intervalId);
     gol.initialize(
       Math.floor(CANVAS_SIZE / CELL_SIZE),
       Math.floor(CANVAS_SIZE / CELL_SIZE)
     );
-  }, 10 * 1000);
+    intervalId = setInterval(redraw, 10 * 1000);
+  };
+
+  window.onclick = redraw;
+  window.onresize = redraw;
+
+  intervalId = setInterval(redraw, 10 * 1000);
 };
 
 draw();
