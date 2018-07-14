@@ -68,6 +68,9 @@ const draw = () => {
 
   const redraw = () => {
     clearInterval(intervalId);
+    const bgCanvas = document.getElementById("bg");
+    bgCanvas.width = document.body.clientWidth;
+    bgCanvas.height = document.body.clientHeight;
     gol.initialize(
       Math.floor(CANVAS_SIZE / CELL_SIZE),
       Math.floor(CANVAS_SIZE / CELL_SIZE)
