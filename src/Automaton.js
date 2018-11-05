@@ -41,7 +41,7 @@ export const DazzleStrategy = neighborCells => {
 
 export class Automaton {
   constructor(width, height, strategy) {
-    this._strategy = strategy;
+    this.strategy = strategy;
     this.initialize(width, height);
   }
 
@@ -61,7 +61,7 @@ export class Automaton {
       ]);
     this.cells = this.cells.map((row, y) =>
       row.map((cell, x) => {
-        return this._strategy([
+        return this.strategy([
           g(y - 1, x - 1),
           g(y - 1, x),
           g(y - 1, x + 1),

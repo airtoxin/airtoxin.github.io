@@ -75,6 +75,16 @@ const draw = () => {
       Math.floor(CANVAS_SIZE / CELL_SIZE),
       Math.floor(CANVAS_SIZE / CELL_SIZE)
     );
+    const p = Math.random();
+    if (p < 0.05) {
+      gol.strategy = NeonStrategy;
+    } else if (p < 0.2) {
+      gol.strategy = GameOfLifeStrategy;
+    } else if (p < 0.6) {
+      gol.strategy = VoteStrategy;
+    } else {
+      gol.strategy = DazzleStrategy;
+    }
     intervalId = setInterval(redraw, 10 * 1000);
   };
 
