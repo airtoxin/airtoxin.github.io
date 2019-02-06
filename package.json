@@ -11,7 +11,7 @@
     "deploy": "rm -rf dist && npm run build && gh-pages -d dist -b master"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
+    "babel-core": "6.26.3",
     "babel-loader": "7.1.5",
     "babel-plugin-lodash": "3.3.2",
     "babel-preset-env": "1.7.0",
