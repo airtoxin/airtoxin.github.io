@@ -17,7 +17,7 @@ module.exports = {
       inject: true,
       template: "./src/index.html"
     }),
-    CopyWebpackPlugin([
+    new CopyWebpackPlugin([
       {
         from: "src/index.scss",
         to: "index.css",
