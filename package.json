@@ -8,11 +8,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "fmt": "prettier --write 'src/**/*.{js,scss}'",
-    "deploy": "rm -rf dist && npm run build && gh-pages -d dist -b master"
+    "fmt": "prettier --write 'src/**/*.{js,scss}'"
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0",
     "prettier": "^3.0.0",
     "sass": "^1.69.0",
     "vite": "^5.0.0"
