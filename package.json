@@ -4,15 +4,17 @@
   "repository": "git@github.com:airtoxin/airtoxin.github.io.git",
   "author": "airtoxin <airtoxin@icloud.com>",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "fmt": "prettier --write 'src/**/*.{js,scss}'"
+    "fmt": "prettier --write 'src/**/*.{js,css}'"
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "prettier": "^3.0.0",
-    "sass": "^1.69.0",
+    "tailwindcss": "^4.3.3",
     "vite": "^5.0.0"
   },
   "dependencies": {
