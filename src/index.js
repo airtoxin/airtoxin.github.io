@@ -6,6 +6,7 @@ import {
   VoteStrategy,
   DazzleStrategy
 } from "./Automaton";
+import { ParticleLife } from "./ParticleLife";
 
 const CELL_SIZE = 5;
 const CANVAS_SIZE = 300;
@@ -29,11 +30,12 @@ const draw = () => {
     Math.floor(CANVAS_SIZE / CELL_SIZE),
     DazzleStrategy
   );
+  // セルの密度を既存パターンに近づけるため粒子を多めにする
+  const particleLife = new ParticleLife(720);
+  let mode = "automaton";
 
-  const d = () => {
-    ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    gol.cells.forEach((row, y) =>
+  const drawCells = (cells) =>
+    cells.forEach((row, y) =>
       row.forEach((cell, x) => {
         if (cell) {
           ctx.beginPath();
@@ -52,13 +54,31 @@ const draw = () => {
       })
     );
 
+  const d = () => {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (mode === "particleLife") {
+      drawCells(
+        particleLife.toCells(
+          Math.floor(CANVAS_SIZE / CELL_SIZE),
+          Math.floor(CANVAS_SIZE / CELL_SIZE)
+        )
+      );
+    } else {
+      drawCells(gol.cells);
+    }
+
     const bgPattern = bgCtx.createPattern(canvas, "repeat");
     bgCtx.rect(0, 0, document.body.clientWidth, document.body.clientHeight);
     bgCtx.fillStyle = bgPattern;
 
     bgCtx.fill();
 
-    gol.next();
+    if (mode === "particleLife") {
+      particleLife.next();
+    } else {
+      gol.next();
+    }
 
     requestAnimationFrame(d);
   };
@@ -77,11 +97,15 @@ const draw = () => {
       Math.floor(CANVAS_SIZE / CELL_SIZE)
     );
     const p = Math.random();
-    if (p < 0.05) {
+    mode = "automaton";
+    if (p < 0.2) {
+      mode = "particleLife";
+      particleLife.initialize();
+    } else if (p < 0.25) {
       gol.strategy = NeonStrategy;
-    } else if (p < 0.2) {
+    } else if (p < 0.4) {
       gol.strategy = GameOfLifeStrategy;
-    } else if (p < 0.6) {
+    } else if (p < 0.7) {
       gol.strategy = VoteStrategy;
     } else {
       gol.strategy = DazzleStrategy;
