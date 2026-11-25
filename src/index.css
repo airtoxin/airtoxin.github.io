@@ -55,3 +55,10 @@
     100% { clip: rect(10px, 9999px, 6px, 0); }
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-text]::before,
+  [data-text]::after {
+    animation: none;
+  }
+}

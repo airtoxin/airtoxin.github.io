@@ -11,27 +11,31 @@ import { ParticleLife } from "./ParticleLife";
 const CELL_SIZE = 5;
 const CANVAS_SIZE = 300;
 
+const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
 const draw = () => {
   const canvas = document.getElementById("canvas");
   canvas.width = CANVAS_SIZE;
   canvas.height = CANVAS_SIZE;
 
   const bgCanvas = document.getElementById("bg");
-  bgCanvas.width = document.body.clientWidth;
-  bgCanvas.height = document.body.clientHeight;
+  const resizeBackground = () => {
+    const { clientWidth, clientHeight } = document.documentElement;
+    if (bgCanvas.width !== clientWidth) bgCanvas.width = clientWidth;
+    if (bgCanvas.height !== clientHeight) bgCanvas.height = clientHeight;
+  };
+  resizeBackground();
   const bgCtx = bgCanvas.getContext("2d");
 
   const ctx = canvas.getContext("2d");
-  ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
-  ctx.fill();
+  ctx.strokeStyle = "rgb(0, 64, 64)";
 
   const gol = new Automaton(
     Math.floor(CANVAS_SIZE / CELL_SIZE),
     Math.floor(CANVAS_SIZE / CELL_SIZE),
     DazzleStrategy
   );
-  // セルの密度を既存パターンに近づけるため粒子を多めにする
-  const particleLife = new ParticleLife(720);
+  let particleLife;
   let mode = "automaton";
 
   const drawCells = (cells) =>
@@ -46,7 +50,6 @@ const draw = () => {
             Math.PI * 2,
             false
           );
-          ctx.strokeStyle = "rgb(0, 64, 64)";
           ctx.stroke();
           ctx.fillStyle = "rgba(0, 32, 32)";
           ctx.fill();
@@ -68,11 +71,8 @@ const draw = () => {
       drawCells(gol.cells);
     }
 
-    const bgPattern = bgCtx.createPattern(canvas, "repeat");
-    bgCtx.rect(0, 0, document.body.clientWidth, document.body.clientHeight);
-    bgCtx.fillStyle = bgPattern;
-
-    bgCtx.fill();
+    bgCtx.fillStyle = bgCtx.createPattern(canvas, "repeat");
+    bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
 
     if (mode === "particleLife") {
       particleLife.next();
@@ -85,13 +85,15 @@ const draw = () => {
 
   d();
 
-  let intervalId;
+  let resetTimer;
 
   const redraw = () => {
-    clearInterval(intervalId);
-    const bgCanvas = document.getElementById("bg");
-    bgCanvas.width = document.body.clientWidth;
-    bgCanvas.height = document.body.clientHeight;
+    clearTimeout(resetTimer);
+    if (document.hidden) {
+      resetTimer = setTimeout(redraw, 10_000);
+      return;
+    }
+    resizeBackground();
     gol.initialize(
       Math.floor(CANVAS_SIZE / CELL_SIZE),
       Math.floor(CANVAS_SIZE / CELL_SIZE)
@@ -100,7 +102,8 @@ const draw = () => {
     mode = "automaton";
     if (p < 0.2) {
       mode = "particleLife";
-      particleLife.initialize();
+      if (particleLife) particleLife.initialize();
+      else particleLife = new ParticleLife(720);
     } else if (p < 0.25) {
       gol.strategy = NeonStrategy;
     } else if (p < 0.4) {
@@ -110,14 +113,13 @@ const draw = () => {
     } else {
       gol.strategy = DazzleStrategy;
     }
-    intervalId = setInterval(redraw, 10 * 1000);
+    resetTimer = setTimeout(redraw, 10_000);
   };
 
-  window.onclick = redraw;
-  window.onresize = redraw;
-  window.addEventListener("touchend", redraw, false);
+  window.addEventListener("click", redraw);
+  window.addEventListener("resize", resizeBackground);
 
-  intervalId = setInterval(redraw, 10 * 1000);
+  resetTimer = setTimeout(redraw, 10_000);
 };
 
-draw();
+if (!motion.matches) requestAnimationFrame(draw);

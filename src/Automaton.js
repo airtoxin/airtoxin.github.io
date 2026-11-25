@@ -1,43 +1,28 @@
-import { range, get } from "lodash";
-
-export const GameOfLifeStrategy = neighborCells => {
-  const count = neighborCells
-    .filter((_, i) => i !== 4) // omit center cell
-    .map(x => (x === undefined || x === false ? 0 : 1))
-    .reduce((a, x) => a + x, 0);
-
-  if (neighborCells[4]) {
-    return count === 2 || count === 3;
-  } else {
-    return count === 3;
+const countCells = (cells, omitCenter = false) => {
+  let count = 0;
+  for (let i = 0; i < cells.length; i++) {
+    if (omitCenter && i === 4) continue;
+    if (cells[i] !== undefined && cells[i] !== false) count++;
   }
+  return count;
 };
 
-export const VoteStrategy = neighborCells => {
-  const count = neighborCells
-    .map(x => (x === undefined || x === false ? 0 : 1))
-    .reduce((a, x) => a + x, 0);
-
-  if (count === 4 || count === 5) return !neighborCells[4];
-  if (count < 4) return false;
-  return true;
+export const GameOfLifeStrategy = cells => {
+  const count = countCells(cells, true);
+  return count === 3 || (Boolean(cells[4]) && count === 2);
 };
 
-export const NeonStrategy = neighborCells => {
-  const count = neighborCells
-    .map(x => (x === undefined || x === false ? 0 : 1))
-    .reduce((a, x) => a + x, 0);
+export const VoteStrategy = cells => {
+  const count = countCells(cells);
+  return count === 4 || count === 5 ? !cells[4] : count > 5;
+};
 
+export const NeonStrategy = cells => {
+  const count = countCells(cells);
   return count === 0 || count === 9;
 };
 
-export const DazzleStrategy = neighborCells => {
-  const count = neighborCells
-    .map(x => (x === undefined || x === false ? 0 : 1))
-    .reduce((a, x) => a + x, 0);
-
-  return count > 4;
-};
+export const DazzleStrategy = cells => countCells(cells) > 4;
 
 export class Automaton {
   constructor(width, height, strategy) {
@@ -46,33 +31,27 @@ export class Automaton {
   }
 
   initialize(width, height) {
-    this.cells = range(0, height).map(() =>
-      range(0, width).map(() => Math.random() < 0.5)
+    this.cells = Array.from({ length: height }, () =>
+      Array.from({ length: width }, () => Math.random() < 0.5)
     );
   }
 
   next() {
-    const cellsYLength = this.cells.length;
-    const cellsXLength = this.cells[0].length;
-    const g = (y, x) =>
-      get(this.cells, [
-        (cellsYLength + y) % cellsYLength,
-        (cellsXLength + x) % cellsXLength
-      ]);
-    this.cells = this.cells.map((row, y) =>
-      row.map((cell, x) => {
+    const { cells } = this;
+    const height = cells.length;
+    const width = cells[0].length;
+    this.cells = cells.map((row, y) => {
+      const above = cells[y === 0 ? height - 1 : y - 1];
+      const below = cells[y === height - 1 ? 0 : y + 1];
+      return row.map((cell, x) => {
+        const left = x === 0 ? width - 1 : x - 1;
+        const right = x === width - 1 ? 0 : x + 1;
         return this.strategy([
-          g(y - 1, x - 1),
-          g(y - 1, x),
-          g(y - 1, x + 1),
-          g(y, x - 1),
-          g(y, x),
-          g(y, x + 1),
-          g(y + 1, x - 1),
-          g(y + 1, x),
-          g(y + 1, x + 1)
+          above[left], above[x], above[right],
+          row[left], cell, row[right],
+          below[left], below[x], below[right]
         ]);
-      })
-    );
+      });
+    });
   }
 }

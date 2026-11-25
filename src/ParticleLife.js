@@ -4,6 +4,7 @@
 // そのため種族を描き分けずにグリッドへ落とし込んでも成立する。
 
 const R_MAX = 0.1; // 相互作用が届く距離（ワールド幅を 1 とした比率）
+const R_MAX_SQUARED = R_MAX * R_MAX;
 const BETA = 0.3; // これより近いと種族に関係なく反発する
 const DT = 0.02;
 const FRICTION = Math.pow(0.5, DT / 0.04);
@@ -48,12 +49,15 @@ export class ParticleLife {
       let fx = 0;
       let fy = 0;
       const row = matrix[types[i]];
+      const x = xs[i];
+      const y = ys[i];
       for (let j = 0; j < PARTICLE_COUNT; j++) {
         if (i === j) continue;
-        const dx = wrapDelta(xs[j] - xs[i]);
-        const dy = wrapDelta(ys[j] - ys[i]);
-        const r = Math.hypot(dx, dy);
-        if (r === 0 || r >= R_MAX) continue;
+        const dx = wrapDelta(xs[j] - x);
+        const dy = wrapDelta(ys[j] - y);
+        const rSquared = dx * dx + dy * dy;
+        if (rSquared === 0 || rSquared >= R_MAX_SQUARED) continue;
+        const r = Math.sqrt(rSquared);
         const f = force(r / R_MAX, row[types[j]]);
         fx += (dx / r) * f;
         fy += (dy / r) * f;
